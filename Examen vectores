@@ -1,0 +1,52 @@
+##Rafael Longinos Meza
+##1Matriz
+p<-(11:30)
+M1<-matrix(p,nrow = 4,ncol = 5,byrow = TRUE)
+M1
+dim(M1)
+rownames(M1)<-c("Toluca","Pachuca","Gdl","Mty")
+colnames(M1)<-c("Escuela1","Escuela2","Escuela3","Escuela4","Escuela5")
+M1
+##llamar dato
+M1[1,3]
+M1[3,5]
+M1[2,1]
+##2Matriz
+p1<-1:18
+M2<-matrix(p1,nrow=6,ncol = 3,byrow = TRUE)
+M2
+M2[3,3]
+##3Completar el codigo
+s<-matrix(1:9,nrow = 3)
+s
+s[,1]*s[,2]
+##4
+a<-c("pequeno","largo","enorme")
+b<-a!="largo"
+a[b]
+##5
+facultad<-c("Economia","Arquitectura","Derecho","Turismo")
+Lic<-c("Act","Arq","Lic","Tur")
+Cal_Alumnos<-c(10,9,8,7)
+mode(facultad)
+mode(Lic)
+mode(Cal_Alumnos)
+datos1<-data.frame(facultad,Lic,Cal_Alumnos)
+datos1
+##Eliminar  sujeto 3
+datos1[-3,]
+pie()
+##
+edad<-c(32,35,43,25)
+nombres<-c("carlos","juan","raquel","paty")
+s_conyugal<-c("casado","soltero","soltero","union_libre")
+s_social<-c("IMSS","IMSS","ISSSTE","PRIVADO")
+ocupacion<-c("contador","carpitero","profesora","disenador")
+datos2<-data.frame(edad,nombres,s_conyugal,s_social,ocupacion)
+datos2
+ocupacion[c(2,4)]
+s_social[c(3,1)]
+s_conyugal[c(4,2)]
+u<-sum(datos2[,1])
+u
+
