@@ -1,0 +1,31 @@
+## Clase 21 de Agosto 2018
+library("ggplot2")
+
+x<-c(132,129,120,113.2,105,92,84,83.2,88.4,59,80,81.5,71,69.2)
+y<-c(46,48,51,52.1,54,52,59,58.7,61.6,64,61.4,54.6,58.8,58)
+date1<-data.frame(x,y)
+date1
+sp<-ggplot(date1, aes(x=x,y=y))+geom_point()+ggtitle("Diagrama de Dispersion")+xlab("Variable independiente X")+
+  ylab("Variable dependiente Y")
+sp
+## Calcular parametro B1
+Mx<-mean(x)
+My<-mean(y)
+
+num<-sum((x-Mx)*(y-My))
+den<-sum((x-Mx)*(x-Mx))
+
+b1<-num/den
+b1
+
+## Calcular parametro Bo
+
+b0<-(sum(y)-b1*(sum(x)))/14
+b0
+## Comprobación
+library("stats")
+reg1<-lm(y~x, data = date1)
+reg1
+
+## Grafico 2 (Opcion 1)
+sp+geom_abline(intercept =b0,slope=b1, color="red",linetype="dashed",size=1.5)
