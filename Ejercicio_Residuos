@@ -1,0 +1,39 @@
+## TAREA 3 Residuos "Rafael Longinos"
+library("ggplot2")
+x<-c(125.3,98.2,201.4,147.3,145.9,124.7,112.2,120.2,161.2,178.9,159.5,145.8,75.1,151.4,
+     144.2,125,198.8,132.5,159.6,110.7)
+y<-c(77.9,76.8,81.5,79.8,78.2,78.3,77.5,77.0,80.1,80.2,79.9,79,76.7,78.2,79.5,78.1,81.5,
+     77,79,78.6)
+date1<-data.frame(x,y)
+date1
+## Calcular parametro B1
+Mx<-mean(x)
+My<-mean(y)
+
+num<-sum((x-Mx)*(y-My))
+den<-sum((x-Mx)*(x-Mx))
+
+B1<-num/den
+B1
+## Calcular parametro B0
+B0<-(sum(y)-B1*(sum(x)))/20
+B0
+
+## Comprobación
+library("stats")
+Regresion1<-lm(y~x, data = date1)
+Regresion1
+
+## Grafico
+sp<-ggplot(date1, aes(x=x,y=y))+geom_point()+ggtitle("Diagrama de Dispersion")+xlab("Variable independiente X")+
+  ylab("Variable dependiente Y")
+sp+geom_abline(intercept =B0,slope=B1, color="red",linetype="dashed",size=1.5)
+
+## Calcular Y estimada:
+Y_estimadas<-(B0+(B1*x))
+Y<-data.frame(Y_estimadas)
+## Calculo de Residuos
+Y_residuos<-(y-Y)
+YR<-data.frame(Y_residuos)
+Residuos<-sum(YR)
+Residuos
